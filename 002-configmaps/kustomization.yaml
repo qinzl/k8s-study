@@ -3,11 +3,27 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: equuaam
 configMapGenerator:
+
+# ConfigMaps From Files
 - name: my-application-properties
   files:
   - myapp/application.properties
 
+# ConfigMaps From Literals
 - name: my-java-server-env-vars
   literals:
   - JAVA_HOME=/opt/java/jdk
   - JAVA_TOOL_OPTIONS=-agentlib:hprof
+
+# ConfigMaps From Environment Files
+- name: tracing-options
+  env: myapp/tracing.env
+
+
+# Secrets from Files
+secretGenerator:
+- name: app-tls
+  files:
+    - "secret/tls.cert"
+    - "secret/tls.key"
+  type: "kubernetes.io/tls"
