@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: equuaam
 images:
   - name: nginx # match images with this name
-    newTag: 1.8.0 # override the tag
+    newTag: 1.16 # override the tag
     newName: nginx-special # override the name
 resources:
 - deployment.yaml
