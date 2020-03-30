@@ -20,10 +20,14 @@ configMapGenerator:
   env: myapp/tracing.env
 
 
-# Secrets from Files
-secretGenerator:
-- name: app-tls
-  files:
-    - "secret/tls.cert"
-    - "secret/tls.key"
-  type: "kubernetes.io/tls"
+## Secrets from Files
+# secretGenerator:
+# - name: app-tls
+#   files:
+#     - "secret/tls.cert"
+#     - "secret/tls.key"
+#   type: "kubernetes.io/tls"
+
+
+resources:
+- deployment.yaml
